@@ -134,6 +134,7 @@
         margin: 0;
         font-weight: 500;
       }
+      
   
       /* Contact Section */
       #contact form {
@@ -161,3 +162,22 @@
         padding: 20px;
         margin-top: 40px;
       }
+
+
+      /* Only apply watermark on modal images */
+.watermarked {
+    position: relative; /* Needed for the pseudo-element positioning */
+  }
+  
+  /* Watermark overlay in the modal (large view only) */
+  .watermarked::after {
+    content: "© Fawad Saqlain";
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 32px;      /* Larger watermark text */
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none; /* Allows clicking through to the image */
+  }
+  
