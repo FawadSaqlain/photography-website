@@ -179,19 +179,3 @@ html {
     padding: 20px;
     margin-top: 40px;
   }
-  
-  /* Watermarked Images in Modal */
-  .watermarked {
-    position: relative;
-  }
-  .watermarked::after {
-    content: "© Fawad Saqlain";
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: rgba(255, 255, 255, 0.5);
-    pointer-events: none;
-  }
-  
