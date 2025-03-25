@@ -10,171 +10,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Global Reset / Base */
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      padding-top: 70px; /* Space for the fixed navbar */
-    }
-    h2 {
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-    }
-    p {
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    .section {
-      padding: 80px 0;
-    }
-
-    /* Navbar */
-    .navbar {
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .navbar-brand {
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-    .nav-link {
-      margin-right: 1rem;
-    }
-    .nav-link:hover {
-      color: #4675f8 !important; /* a subtle highlight color */
-    }
-
-    /* Hero / Home Section */
-    #home {
-      background: linear-gradient(to right, #4693f8, #6b37fb);
-      color: #fff;
-      text-align: center;
-      border-radius: 8px;
-    }
-    #home h2 {
-      color: #fff;
-      margin-top: 0.5rem;
-    }
-    #home p {
-      color: #fff;
-      font-size: 1.1rem;
-    }
-
-    /* About Section */
-    #about p {
-      max-width: 800px;
-    }
-
-    /* Gallery Section */
-    #gallery p {
-      max-width: 800px;
-    }
-    .gallery {
-      column-count: 4;
-      column-gap: 1rem;
-      max-width: 1200px;
-      margin: 40px auto; /* More spacing above/below gallery */
-    }
-    .gallery-item {
-      display: inline-block;
-      width: 100%;
-      margin-bottom: 1rem;
-      break-inside: avoid;
-      position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      cursor: pointer;
-      background-color: #fff;
-    }
-    .gallery-item img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    .gallery-item:hover img {
-      transform: scale(1.05);
-      opacity: 0.9;
-    }
-    /* Overlay effect on hover */
-    .gallery-item:hover .gallery-overlay {
-      opacity: 1;
-    }
-    .gallery-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.4);
-      color: #fff;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 1rem;
-      padding: 1rem;
-    }
-    /* Responsive adjustments for columns */
-    @media (max-width: 1200px) {
-      .gallery { column-count: 3; }
-    }
-    @media (max-width: 992px) {
-      .gallery { column-count: 2; }
-    }
-    @media (max-width: 576px) {
-      .gallery { column-count: 1; }
-    }
-
-    /* Modals */
-    .modal-content {
-      border-radius: 8px;
-    }
-    .modal-footer {
-      justify-content: space-between;
-      align-items: center;
-    }
-    .modal-footer p {
-      margin: 0;
-      font-weight: 500;
-    }
-
-    /* Contact Section */
-    #contact form {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    #contact label {
-      font-weight: 600;
-    }
-    #contact .btn-primary {
-      background-color: #4675f8;
-      border-color: #4675f8;
-      font-weight: 600;
-    }
-    #contact .btn-primary:hover {
-      background-color: #6b37fb;
-      border-color: #6b37fb;
-    }
-
-    /* Footer (Optional) */
-    footer {
-      background-color: #343a40;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="70">
   <!-- Navigation Bar -->
@@ -212,62 +48,63 @@
     <div class="gallery">
       <!-- Sample gallery items (12) -->
       <div class="gallery-item" data-toggle="modal" data-target="#modal1">
-        <img src="photo1.jpg" alt="Sunset at the beach">
+        <img src="photos/photo1.jpg" alt="Sunset at the beach">
         <div class="gallery-overlay">Sunset at the beach</div>
       </div>
       <div class="gallery-item" data-toggle="modal" data-target="#modal2">
-        <img src="photo2.jpg" alt="Mountain landscape">
+        <img src="photos/photo2.jpg" alt="Mountain landscape">
         <div class="gallery-overlay">Mountain landscape</div>
       </div>
       <div class="gallery-item" data-toggle="modal" data-target="#modal3">
-        <img src="photo3.jpg" alt="City skyline at night">
+        <img src="photos/photo3.jpg" alt="City skyline at night">
         <div class="gallery-overlay">City skyline at night</div>
       </div>
       <div class="gallery-item" data-toggle="modal" data-target="#modal4">
-        <img src="photo4.jpg" alt="Serene lake view">
+        <img src="photos/photo4.jpg" alt="Serene lake view">
         <div class="gallery-overlay">Serene lake view</div>
       </div>
       <div class="gallery-item" data-toggle="modal" data-target="#modal5">
-        <img src="photo5.jpg" alt="Forest trail in autumn">
+        <img src="photos/photo5.jpg" alt="Forest trail in autumn">
         <div class="gallery-overlay">Forest trail in autumn</div>
       </div>
       <div class="gallery-item" data-toggle="modal" data-target="#modal6">
-        <img src="photo6.jpg" alt="Modern architecture">
+        <img src="photos/photo6.jpg" alt="Modern architecture">
         <div class="gallery-overlay">Modern architecture</div>
       </div>
       <div class="gallery-item" data-toggle="modal" data-target="#modal7">
-        <img src="photo7.jpg" alt="Ocean waves">
+        <img src="photos/photo7.jpg" alt="Ocean waves">
         <div class="gallery-overlay">Ocean waves</div>
       </div>
       <div class="gallery-item" data-toggle="modal" data-target="#modal8">
-        <img src="photo8.jpg" alt="Desert sunset">
+        <img src="photos/photo8.jpg" alt="Desert sunset">
         <div class="gallery-overlay">Desert sunset</div>
       </div>
       <div class="gallery-item" data-toggle="modal" data-target="#modal9">
-        <img src="photo9.jpg" alt="Snowy mountains">
+        <img src="photos/photo9.jpg" alt="Snowy mountains">
         <div class="gallery-overlay">Snowy mountains</div>
       </div>
       <div class="gallery-item" data-toggle="modal" data-target="#modal10">
-        <img src="photo10.jpg" alt="Green forest">
+        <img src="photos/photo10.jpg" alt="Green forest">
         <div class="gallery-overlay">Green forest</div>
       </div>
       <div class="gallery-item" data-toggle="modal" data-target="#modal11">
-        <img src="photo11.jpg" alt="City street art">
+        <img src="photos/photo11.jpg" alt="City street art">
         <div class="gallery-overlay">City street art</div>
       </div>
       <div class="gallery-item" data-toggle="modal" data-target="#modal12">
-        <img src="photo12.jpg" alt="Calm river">
+        <img src="photos/photo12.jpg" alt="Calm river">
         <div class="gallery-overlay">Calm river</div>
       </div>
     </div>
 
     <!-- Modals for each photo -->
     <!-- Example modal (repeat for each photo) -->
+    <!-- Modals for each photo -->
     <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modalLabel1" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-body p-0">
-            <img src="photo1.jpg" alt="Sunset at the beach" class="img-fluid">
+            <img src="photos/photo1.jpg" alt="Sunset at the beach" class="img-fluid">
           </div>
           <div class="modal-footer">
             <p class="mb-0">Sunset at the beach</p>
@@ -276,12 +113,12 @@
         </div>
       </div>
     </div>
-    <!-- Repeat modals for modal2, modal3, ... modal12 with corresponding IDs and images -->
+    
     <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modalLabel2" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-body p-0">
-            <img src="photo2.jpg" alt="Mountain landscape" class="img-fluid">
+            <img src="photos/photo2.jpg" alt="Mountain landscape" class="img-fluid">
           </div>
           <div class="modal-footer">
             <p class="mb-0">Mountain landscape</p>
@@ -290,7 +127,147 @@
         </div>
       </div>
     </div>
-    <!-- ... and so on for all 12 images ... -->
+    
+    <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="modalLabel3" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <img src="photos/photo3.jpg" alt="City skyline at night" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <p class="mb-0">City skyline at night</p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="modalLabel4" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <img src="photos/photo4.jpg" alt="Serene lake view" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <p class="mb-0">Serene lake view</p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="modalLabel5" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <img src="photos/photo5.jpg" alt="Forest trail in autumn" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <p class="mb-0">Forest trail in autumn</p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="modalLabel6" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <img src="photos/photo6.jpg" alt="Modern architecture" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <p class="mb-0">Modern architecture</p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal7" tabindex="-1" role="dialog" aria-labelledby="modalLabel7" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <img src="photos/photo7.jpg" alt="Ocean waves" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <p class="mb-0">Ocean waves</p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal8" tabindex="-1" role="dialog" aria-labelledby="modalLabel8" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <img src="photos/photo8.jpg" alt="Desert sunset" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <p class="mb-0">Desert sunset</p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal9" tabindex="-1" role="dialog" aria-labelledby="modalLabel9" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <img src="photos/photo9.jpg" alt="Snowy mountains" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <p class="mb-0">Snowy mountains</p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal10" tabindex="-1" role="dialog" aria-labelledby="modalLabel10" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <img src="photos/photo10.jpg" alt="Green forest" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <p class="mb-0">Green forest</p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal11" tabindex="-1" role="dialog" aria-labelledby="modalLabel11" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <img src="photos/photo11.jpg" alt="City street art" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <p class="mb-0">City street art</p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="modal12" tabindex="-1" role="dialog" aria-labelledby="modalLabel12" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <img src="photos/photo12.jpg" alt="Calm river" class="img-fluid">
+          </div>
+          <div class="modal-footer">
+            <p class="mb-0">Calm river</p>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
   </section>
 
