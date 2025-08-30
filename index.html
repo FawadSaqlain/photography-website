@@ -93,28 +93,5 @@
   <!-- Dynamic Gallery Script -->
   <script src="gallery.js"></script>
   
-  <!-- Navbar Toggle Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const toggler = document.querySelector('.navbar-toggler');
-      const navbarNav = document.querySelector('#navbarNav');
-      
-      if (toggler && navbarNav) {
-        toggler.addEventListener('click', function(e) {
-          e.preventDefault();
-          console.log('Toggle clicked'); // Debug log
-          
-          // Toggle the navbar
-          navbarNav.classList.toggle('show');
-          
-          // Update aria-expanded
-          const isExpanded = navbarNav.classList.contains('show');
-          this.setAttribute('aria-expanded', isExpanded);
-          
-          console.log('Navbar expanded:', isExpanded); // Debug log
-        });
-      }
-    });
-  </script>
 </body>
 </html>

@@ -91,27 +91,6 @@ html {
     box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.25);
   }
   
-  /* Responsive navbar behavior */
-  @media (max-width: 991.98px) {
-    .navbar-collapse {
-      display: none !important;
-    }
-    .navbar-collapse.show {
-      display: block !important;
-    }
-    .navbar-toggler {
-      display: block !important;
-    }
-  }
-  
-  @media (min-width: 992px) {
-    .navbar-collapse {
-      display: flex !important;
-    }
-    .navbar-toggler {
-      display: none !important;
-    }
-  }
   
   /* Home Section */
   #home {
