@@ -16,8 +16,8 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="70">
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <a class="navbar-brand" href="#"><img src="camera-icon.webp" width="30" style="border-radius: 50%; border: 2px solid whitesmoke; margin-right: 10px;" alt="">My Photography</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <a class="navbar-brand" href="#"><img src="camera-icon.webp" width="30" style="border-radius: 50%; border: 2px solid whitesmoke; margin-right: 20px;" alt="">My Photography</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -93,89 +93,27 @@
   <!-- Dynamic Gallery Script -->
   <script src="gallery.js"></script>
   
-  <!-- Clean Navbar Script -->
+  <!-- Navbar Toggle Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const navbar = {
-        toggler: document.querySelector('.navbar-toggler'),
-        collapse: document.querySelector('#navbarNav'),
-        links: document.querySelectorAll('.navbar-nav .nav-link'),
-        
-        init() {
-          this.bindEvents();
-          this.updateActiveLink();
-        },
-        
-        bindEvents() {
-          // Toggle navbar on button click
-          this.toggler?.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.toggle();
-          });
-          
-          // Close navbar when link is clicked on mobile
-          this.links.forEach(link => {
-            link.addEventListener('click', (e) => {
-              this.setActiveLink(e.target);
-              if (window.innerWidth < 768) {
-                this.close();
-              }
-            });
-          });
-          
-          // Handle window resize
-          window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768) {
-              this.close();
-            }
-          });
-        },
-        
-        toggle() {
-          if (this.collapse.classList.contains('show')) {
-            this.close();
-          } else {
-            this.open();
-          }
-        },
-        
-        open() {
-          this.collapse.classList.add('show');
-          this.toggler.setAttribute('aria-expanded', 'true');
-        },
-        
-        close() {
-          this.collapse.classList.remove('show');
-          this.toggler.setAttribute('aria-expanded', 'false');
-        },
-        
-        setActiveLink(activeLink) {
-          this.links.forEach(link => link.classList.remove('active'));
-          activeLink.classList.add('active');
-        },
-        
-        updateActiveLink() {
-          // Set active link based on current section
-          const sections = document.querySelectorAll('section[id]');
-          const scrollPos = window.scrollY + 100;
-          
-          sections.forEach(section => {
-            const top = section.offsetTop;
-            const bottom = top + section.offsetHeight;
-            const link = document.querySelector(`a[href="#${section.id}"]`);
-            
-            if (scrollPos >= top && scrollPos <= bottom) {
-              this.setActiveLink(link);
-            }
-          });
-        }
-      };
+      const toggler = document.querySelector('.navbar-toggler');
+      const navbarNav = document.querySelector('#navbarNav');
       
-      // Initialize navbar
-      navbar.init();
-      
-      // Update active link on scroll
-      window.addEventListener('scroll', () => navbar.updateActiveLink());
+      if (toggler && navbarNav) {
+        toggler.addEventListener('click', function(e) {
+          e.preventDefault();
+          console.log('Toggle clicked'); // Debug log
+          
+          // Toggle the navbar
+          navbarNav.classList.toggle('show');
+          
+          // Update aria-expanded
+          const isExpanded = navbarNav.classList.contains('show');
+          this.setAttribute('aria-expanded', isExpanded);
+          
+          console.log('Navbar expanded:', isExpanded); // Debug log
+        });
+      }
     });
   </script>
 </body>
