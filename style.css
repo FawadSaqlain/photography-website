@@ -1,14 +1,50 @@
 /* Global Reset and Base Styles */
-html {
-    scroll-behavior: smooth;
-  }
-  body {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Image Protection Styles */
+img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: auto;
+}
+
+/* Disable text selection globally */
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
     font-family: 'Montserrat', sans-serif;
     background-color: #f4f6f8;
     color: #4a4a4a;
     padding-top: 70px; /* Space for the fixed navbar */
     line-height: 1.7;
-  }
+}
+
+/* Allow text selection for specific elements */
+.navbar-brand, .nav-link, h1, h2, h3, h4, h5, h6, p, .btn {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+html {
+    scroll-behavior: smooth;
+}
   
   /* Headings and Paragraphs */
   h2 {

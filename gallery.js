@@ -46,45 +46,29 @@ class PhotoGallery {
 
     /**
      * Get list of image files from photos folder
-     * Scans for actual files that exist with descriptive names
+     * Uses external config file - no CORS issues!
      */
     async getImageFiles() {
-        const imageFiles = [];
-        
-        // List of actual image files in the photos folder
-        const knownImages = [
-            'sunset-at-the-beach.jpg',
-            'mountain-landscape.jpg',
-            'city-skyline-at-night.jpg',
-            'serene-lake-view.jpg',
-            'forest-trail-in-autumn.jpg',
-            'modern-architecture.jpg',
-            'ocean-waves.jpg',
-            'desert-sunset.jpg',
-            'snowy-mountains.jpg',
-            'green-forest.jpg',
-            'city-street-art.jpg',
-            'calm-river.jpg',
-            'mountain-peak.jpg',
-            'urban-landscape.jpg',
-            'nature-scene.jpg',
-            'architectural-detail.jpg',
-            'landscape-view.jpg',
-            'natural-beauty.jpg',
-            'scenic-vista.jpg',
-            'photography-art.jpg',
-            'creative-composition.jpg'
-        ];
-        
-        // Check which images actually exist
-        for (const filename of knownImages) {
-            const imagePath = `${this.photosFolder}${filename}`;
-            if (await this.imageExists(imagePath)) {
-                imageFiles.push(filename);
-            }
+        // Check if IMAGE_CONFIG is available (loaded from images-config.js)
+        if (typeof IMAGE_CONFIG !== 'undefined' && IMAGE_CONFIG.images) {
+            console.log(`Found ${IMAGE_CONFIG.images.length} images from config`);
+            return IMAGE_CONFIG.images;
+        } else {
+            console.error('IMAGE_CONFIG not found. Please include images-config.js');
+            return [];
         }
-        
-        return imageFiles;
+    }
+
+    /**
+     * Check if an image file exists (quiet - no console errors)
+     */
+    async imageExistsQuiet(imagePath) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = imagePath;
+        });
     }
 
     /**
