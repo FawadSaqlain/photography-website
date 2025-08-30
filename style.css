@@ -78,6 +78,28 @@ html {
     color: #3498db !important;
   }
   
+  /* Responsive navbar behavior */
+  @media (max-width: 991.98px) {
+    .navbar-collapse {
+      display: none !important;
+    }
+    .navbar-collapse.show {
+      display: block !important;
+    }
+    .navbar-toggler {
+      display: block !important;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .navbar-collapse {
+      display: flex !important;
+    }
+    .navbar-toggler {
+      display: none !important;
+    }
+  }
+  
   /* Home Section */
   #home {
     background: linear-gradient(135deg, #3498db, #9b59b6);
