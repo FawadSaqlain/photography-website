@@ -8,6 +8,48 @@ class PhotoGallery {
         this.photosFolder = 'photos/';
         this.galleryContainer = null;
         this.modalContainer = null;
+        this.imageObserver = null;
+        this.initializeImageObserver();
+    }
+
+    /**
+     * Initialize Intersection Observer for advanced lazy loading
+     */
+    initializeImageObserver() {
+        if ('IntersectionObserver' in window) {
+            this.imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        // Add loading animation
+                        img.classList.add('loading');
+                        
+                        // Preload image
+                        const tempImg = new Image();
+                        tempImg.onload = () => {
+                            img.classList.remove('loading');
+                            img.classList.add('loaded');
+                        };
+                        tempImg.src = img.src;
+                        
+                        // Stop observing this image
+                        this.imageObserver.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px', // Start loading 50px before image enters viewport
+                threshold: 0.1
+            });
+        }
+    }
+
+    /**
+     * Observe an image for lazy loading
+     */
+    observeImage(img) {
+        if (this.imageObserver) {
+            this.imageObserver.observe(img);
+        }
     }
 
     /**
@@ -84,7 +126,7 @@ class PhotoGallery {
     }
 
     /**
-     * Create a gallery item element
+     * Create a gallery item element with priority loading
      */
     createGalleryItem(filename, index) {
         const imagePath = `${this.photosFolder}${filename}`;
@@ -96,12 +138,26 @@ class PhotoGallery {
         galleryItem.setAttribute('data-toggle', 'modal');
         galleryItem.setAttribute('data-target', `#${modalId}`);
         
+        // Priority loading: First 6 images load immediately (above-the-fold)
+        // Rest use lazy loading
+        const loadingStrategy = index <= 6 ? 'eager' : 'lazy';
+        const fetchPriority = index <= 3 ? 'high' : 'auto';
+        
         galleryItem.innerHTML = `
-            <img src="${imagePath}" alt="${description}" loading="lazy">
+            <img src="${imagePath}" 
+                 alt="${description}" 
+                 loading="${loadingStrategy}"
+                 fetchpriority="${fetchPriority}"
+                 class="gallery-image">
             <div class="gallery-overlay">${description}</div>
         `;
 
         this.galleryContainer.appendChild(galleryItem);
+        
+        // Add intersection observer for better lazy loading control
+        if (index > 6) {
+            this.observeImage(galleryItem.querySelector('img'));
+        }
     }
 
     /**
