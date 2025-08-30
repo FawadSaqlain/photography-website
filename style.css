@@ -59,6 +59,7 @@ html {
   /* Section Spacing */
   .section {
     padding: 80px 0;
+    /* padding-right: 80px; */
   }
   
   /* Navbar Styles */
