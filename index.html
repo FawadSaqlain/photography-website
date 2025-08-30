@@ -17,7 +17,7 @@
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <a class="navbar-brand" href="#"><img src="camera-icon.webp" width="30" height="30" alt="icon-camera" style="margin-right: 15px; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border:2px solid white">My Photography</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -88,10 +88,28 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <!-- Image Protection Script -->
-  <script src="protection.js"></script>
+  <!-- <script src="protection.js"></script> -->
   <!-- Image Configuration -->
   <script src="images-config.js?v=6"></script>
   <!-- Dynamic Gallery Script -->
   <script src="gallery.js"></script>
+  
+  <!-- Navbar Toggle Debug Script -->
+  <script>
+    $(document).ready(function() {
+      // Debug: Check if navbar toggle is working
+      $('.navbar-toggler').on('click', function() {
+        console.log('Navbar toggler clicked');
+        $('#navbarNav').collapse('toggle');
+      });
+      
+      // Ensure navbar collapses on link click (mobile UX)
+      $('.navbar-nav .nav-link').on('click', function() {
+        if ($(window).width() < 768) {
+          $('.navbar-collapse').collapse('hide');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
