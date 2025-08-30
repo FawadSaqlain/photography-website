@@ -7,8 +7,8 @@
 const IMAGE_CONFIG = {
     images: [
         
-        "331627018_982898826025140_821946266161286670_n.jpeg",
-        "70916407_169649077423098_1678642306006674192_n.jpg",
+        "portrait-photo.jpeg",
+        "landscape-photo.jpg",
         "architectural-detail.jpg",
         "sunset-at-the-beach.jpg",
         "mountain-landscape.jpg",
