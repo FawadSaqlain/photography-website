@@ -15,9 +15,9 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="70">
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-    <a class="navbar-brand" href="#"><img src="camera-icon.webp" width="30" height="30" alt="icon-camera" style="margin-right: 15px; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border:2px solid white">My Photography</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">My Photography</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -84,9 +84,8 @@
   </footer>
 
   <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
   <!-- Image Protection Script -->
   <!-- <script src="protection.js"></script> -->
   <!-- Image Configuration -->
@@ -94,21 +93,89 @@
   <!-- Dynamic Gallery Script -->
   <script src="gallery.js"></script>
   
-  <!-- Navbar Toggle Debug Script -->
+  <!-- Clean Navbar Script -->
   <script>
-    $(document).ready(function() {
-      // Debug: Check if navbar toggle is working
-      $('.navbar-toggler').on('click', function() {
-        console.log('Navbar toggler clicked');
-        $('#navbarNav').collapse('toggle');
-      });
-      
-      // Ensure navbar collapses on link click (mobile UX)
-      $('.navbar-nav .nav-link').on('click', function() {
-        if ($(window).width() < 768) {
-          $('.navbar-collapse').collapse('hide');
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = {
+        toggler: document.querySelector('.navbar-toggler'),
+        collapse: document.querySelector('#navbarNav'),
+        links: document.querySelectorAll('.navbar-nav .nav-link'),
+        
+        init() {
+          this.bindEvents();
+          this.updateActiveLink();
+        },
+        
+        bindEvents() {
+          // Toggle navbar on button click
+          this.toggler?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.toggle();
+          });
+          
+          // Close navbar when link is clicked on mobile
+          this.links.forEach(link => {
+            link.addEventListener('click', (e) => {
+              this.setActiveLink(e.target);
+              if (window.innerWidth < 768) {
+                this.close();
+              }
+            });
+          });
+          
+          // Handle window resize
+          window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+              this.close();
+            }
+          });
+        },
+        
+        toggle() {
+          if (this.collapse.classList.contains('show')) {
+            this.close();
+          } else {
+            this.open();
+          }
+        },
+        
+        open() {
+          this.collapse.classList.add('show');
+          this.toggler.setAttribute('aria-expanded', 'true');
+        },
+        
+        close() {
+          this.collapse.classList.remove('show');
+          this.toggler.setAttribute('aria-expanded', 'false');
+        },
+        
+        setActiveLink(activeLink) {
+          this.links.forEach(link => link.classList.remove('active'));
+          activeLink.classList.add('active');
+        },
+        
+        updateActiveLink() {
+          // Set active link based on current section
+          const sections = document.querySelectorAll('section[id]');
+          const scrollPos = window.scrollY + 100;
+          
+          sections.forEach(section => {
+            const top = section.offsetTop;
+            const bottom = top + section.offsetHeight;
+            const link = document.querySelector(`a[href="#${section.id}"]`);
+            
+            if (scrollPos >= top && scrollPos <= bottom) {
+              this.setActiveLink(link);
+            }
+          });
         }
-      });
+      };
+      
+      // Initialize navbar
+      navbar.init();
+      
+      // Update active link on scroll
+      window.addEventListener('scroll', () => navbar.updateActiveLink());
     });
   </script>
 </body>
